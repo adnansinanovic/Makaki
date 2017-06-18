@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Makaki.Ui.Screens.MainMenu.MainMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Makaki.Ui.Screens.MainMenu"
+             mc:Ignorable="d" Height="55" Width="NaN">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Background="{StaticResource GrayBrush2}">
+            <Button Style="{StaticResource MainMenuButton}" Content="Č_lanovi"  Command="{Binding ButtonPressedParam}" CommandParameter="{x:Static local:MainMenuButton.Members}" >
+            </Button>
+            <Button Style="{StaticResource MainMenuButton}" Content="_Aktivnosti" Command="{Binding ButtonPressedParam}" CommandParameter="{x:Static local:MainMenuButton.Activities}"/>
+            <Button Style="{StaticResource MainMenuButton}" Content="_Financije" Command="{Binding ButtonPressedParam}" CommandParameter="{x:Static local:MainMenuButton.Finances}"/>
+            <Button Style="{StaticResource MainMenuButton}" Content="_Dokument"  Command="{Binding ButtonPressedParam}" CommandParameter="{x:Static local:MainMenuButton.Documents}"/>
+            <Button Style="{StaticResource MainMenuButton}" Content="_Ekonomat"   Command="{Binding ButtonPressedParam}" CommandParameter="{x:Static local:MainMenuButton.Economat}"/>
+            <Button Style="{StaticResource MainMenuButton}" Content="_Home"   Command="{Binding ButtonPressedParam}" CommandParameter="{x:Static local:MainMenuButton.Home}"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

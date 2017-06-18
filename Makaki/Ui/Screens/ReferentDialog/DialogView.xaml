@@ -1,0 +1,90 @@
+﻿<Window x:Class="Makaki.Ui.Screens.ReferentDialog.DialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dialog="clr-namespace:Makaki.Ui.Screens.ReferentDialog"
+        xmlns:list1="clr-namespace:Makaki.Ui.Screens.ReferentDialog.List"
+        xmlns:edit1="clr-namespace:Makaki.Ui.Screens.ReferentDialog.Edit"
+        xmlns:add1="clr-namespace:Makaki.Ui.Screens.ReferentDialog.Add"
+        xmlns:referentDialog="clr-namespace:Makaki.Ui.Screens.ReferentDialog"
+        xmlns:ui="clr-namespace:Makaki.Ui"
+        mc:Ignorable="d"        
+        ShowInTaskbar="False"        
+        WindowStyle="SingleBorderWindow"         
+        Title="" Height="450" Width="500">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type list1:ListViewModel}">
+            <list1:ListView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type edit1:EditViewModel}">
+            <edit1:EditView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type add1:AddViewModel}">
+            <add1:AddView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="LblCodebookName" Content="{Binding DialogTitle}" Style="{StaticResource LabelHeader}"/>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Margin="10 0 0 0">
+            <Button x:Name="BtnAdd" Command="{Binding GoToAdd}"  Style="{StaticResource SubMenuButton}" Foreground="Green">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_add}"  />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <Label Content="_Dodaj"></Label>
+                </StackPanel>
+            </Button>
+            <Button x:Name="BtnEdit" Command="{Binding GoToEdit}"  Style="{StaticResource SubMenuButton}" Foreground="DarkOrange">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_edit}"  />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <Label Content="_Izmjeni"></Label>
+                </StackPanel>
+            </Button>
+            <Button x:Name="BtnDelete"  Command="{Binding DeleteItem}" Style="{StaticResource SubMenuButton}" Foreground="Red">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_delete}"  />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <Label Content="_Ukloni"></Label>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <ContentControl Grid.Row="2" Height="NaN" Content="{Binding ContentArea}" Margin="5 0 10 0" />
+        <Button Grid.Row="3"                
+                Visibility="{Binding Path=ShowCloseButton, Converter={StaticResource BoolToVisibilityConverter}}"                
+                Command="{x:Static ui:MyCommands.CloseCommand}" 
+                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                Style="{StaticResource ButtonCancel}"
+                >
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Width="20" Height="20" Fill="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_cancel}"  />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <Label Content="_Zatvori"></Label>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+
+</Window>

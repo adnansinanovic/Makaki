@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <LinearGradientBrush x:Key="BrushAlertIcon" StartPoint="0.8,0" EndPoint="0.8,1">
+        <GradientStop Color="DarkOrange" Offset="0" />
+        <GradientStop Color="Orange" Offset="0.5" />
+        <GradientStop Color="OrangeRed" Offset="1" />
+    </LinearGradientBrush>
+  
+    <LinearGradientBrush  x:Key="BrushCancel"  StartPoint="0,0" EndPoint="0,1" Opacity="0.25">
+        <GradientStop Offset="1" Color="#FF0000" />
+        <GradientStop Offset=".50" Color="#FF0000" />
+        <GradientStop Offset=".49" Color="Red" />
+        <GradientStop Offset="0" Color="#FF8080" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="BrushOk" StartPoint="0,0" EndPoint="0,1" Opacity="0.25">
+        <GradientStop Offset="1" Color="#0EFF0E" />
+        <GradientStop Offset=".50" Color="#0BCD0B" />
+        <GradientStop Offset=".49" Color="LimeGreen" />
+        <GradientStop Offset="0" Color="#80CD80" />
+    </LinearGradientBrush>
+</ResourceDictionary>

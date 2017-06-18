@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="Makaki.Ui.Screens.Members.MembersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:model="clr-namespace:Makaki.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="245"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Content="Članovi" Style="{StaticResource LabelHeader}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Background="{StaticResource GrayBrush4}" >
+            <Button x:Name="BtnAdd"  Command="{Binding GoToAddCommand}" Content="Dodaj člana" Style="{StaticResource SubMenuButton}"/>
+            <Button x:Name="BtnEdit" Command="{Binding GoToEditCommand}" Content="Izmjeni člana" Style="{StaticResource SubMenuButton}" />
+            <Button x:Name="BtnDelete" Command="{Binding DeleteItem}" Content="_Ukloni člana" Style="{StaticResource SubMenuButton}"/>
+            <controls:DropDownButton                                    
+                x:Name="DropDownButton"
+                
+                Content="Šifrarnik"                               
+                Icon="{DynamicResource IconCodebook}"
+                Style="{StaticResource StyleDropDownButton}"                    
+                ButtonStyle="{DynamicResource SubMenuButton}"
+                BorderThickness="0"  
+                BorderBrush="DarkGray"
+                >
+                <controls:DropDownButton.Items>
+                    <StackPanel Orientation="Vertical">
+                        <Button Content="Članstvo"  Width="{Binding ActualWidth, ElementName=DropDownButton }" Command="{Binding Codebook}" CommandParameter="{x:Type model:MembershipType}"/>
+                        <Button Content="Članarina" Width="{Binding ActualWidth, ElementName=DropDownButton }" Command="{Binding Codebook}" CommandParameter="{x:Type model:AffiliationFeeType}"/>
+                        <Button Content="Funkcije" Width="{Binding ActualWidth, ElementName=DropDownButton }"  Command="{Binding Codebook}" CommandParameter="{x:Type model:MemberFunction}"/>
+                        <Button Content="Sekcije"  Width="{Binding ActualWidth, ElementName=DropDownButton }"  Command="{Binding Codebook}" CommandParameter="{x:Type model:Section}"/>
+                        <Button Content="Priznanja" Width="{Binding ActualWidth, ElementName=DropDownButton }" Command="{Binding Codebook}" CommandParameter="{x:Type model:AchievementType}"/>
+                        <Button Content="Kategorije" Width="{Binding ActualWidth, ElementName=DropDownButton }"  Command="{Binding Codebook}" CommandParameter="{x:Type model:MemberCategory}"/>
+                        <Button Content="Status" Width="{Binding ActualWidth, ElementName=DropDownButton }"  Command="{Binding Codebook}" CommandParameter="{x:Type model:EmploymentStatus}"/>
+                    </StackPanel>
+
+                </controls:DropDownButton.Items>
+            </controls:DropDownButton>
+        </StackPanel>
+
+        <Separator Grid.Row="2"></Separator>
+        <ContentControl Grid.Row="2" Content="{Binding MainContentArea}"></ContentControl>
+
+        <!-- ROW 3 intentionally left empty-->
+        <Separator Grid.Row="3"></Separator>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TabControl Grid.Row="0" Grid.Column="0" SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}" >
+                <TabItem Header="Osnovni podaci" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding BasicInfoArea}"/>
+                </TabItem>
+                <TabItem Header="Uplate" Style="{DynamicResource TabControlHeader}">
+
+                </TabItem>
+                <TabItem Header="Aktivnosti" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding ActivitiesArea}"/>
+                </TabItem>
+                <TabItem Header="Priznanja i nagrade" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding AchievementsArea}"/>
+                </TabItem>
+                <TabItem Header="Zadužena oprema" Style="{DynamicResource TabControlHeader}">
+
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+      
+
+    </Grid>
+</UserControl>

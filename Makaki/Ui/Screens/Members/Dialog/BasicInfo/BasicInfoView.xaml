@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="Makaki.Ui.Screens.Members.Dialog.BasicInfo.BasicInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:validationRules="clr-namespace:Makaki.Ui.ValidationRules"
+             xmlns:ui="clr-namespace:Makaki.Ui"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!-- first row -->
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0"  Content="_Registarski Broj" Target="{Binding ElementName=TextBoxMemberCode}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxMemberCode" 
+                     IsEnabled="False"                     
+                     Style="{StaticResource TextBoxStandard}" 
+                     Text="{Binding MemberCode, Mode=OneWay}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Članstvo" Target="{Binding ElementName=ComboBoxMembershipType}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ComboBoxMembershipType" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding MembershipTypes}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding MembershipTypeId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="MembershipType" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  />
+        </Grid>
+
+        <!-- MAIN -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="50"  MaxWidth="250" Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition MinWidth="50" MaxWidth="250" Width="Auto"/>
+                <ColumnDefinition />
+                <ColumnDefinition MinWidth="50" MaxWidth="250" Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0"  Content="_Ime" Target="{Binding ElementName=TextBoxMemberFirstName}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxMemberFirstName" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
+            <Label Grid.Row="0" Grid.Column="2"  Content="_Prezime" Target="{Binding ElementName=TextBoxMemberLastName}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="0" Grid.Column="3" x:Name="TextBoxMemberLastName" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
+            <Label Grid.Row="0" Grid.Column="4" Content="_Spol" Target="{Binding ElementName=ComboBoxGender}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="0" Grid.Column="5" x:Name="ComboBoxGender" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding Genders}">
+                
+                <ComboBox.SelectedItem>
+                    <Binding Path="Gender" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Converter={StaticResource GenderConverter}}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="_Datum rođenja" Target="{Binding ElementName=DatePicker}" Style="{StaticResource LabelStandard2}"/>
+            <DatePicker Grid.Row="1" Grid.Column="1"  
+                        x:Name="DatePicker" 
+                        Style="{StaticResource DatePickerStandard}" >
+
+                <DatePicker.SelectedDate>
+                    <Binding Path="Birthday" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:DateRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+
+            <Label Grid.Row="1" Grid.Column="2"  Content="_JMBG" Target="{Binding ElementName=TextBoxPid}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="1" Grid.Column="3" x:Name="TextBoxPid" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="PID" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:StringIsNumberRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
+            <!-- ADDRESS -->
+            <Label Grid.Row="2" Grid.Column="0"  Content="Adresa _1" Target="{Binding ElementName=TextBoxMemberAddress1}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxMemberAddress1" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="AddressLine1" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+
+            <Label Grid.Row="2" Grid.Column="2"  Content="Adresa _2" Target="{Binding ElementName=TextBoxMemberAddress2}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="2" Grid.Column="3" x:Name="TextBoxMemberAddress2" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="AddressLine2" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+
+            <Label Grid.Row="3" Grid.Column="0" Content="Naselje" Target="{Binding ElementName=ComboBoxCity}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" x:Name="ComboBoxCity" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding Cities}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding CityId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="City" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Label Grid.Row="3" Grid.Column="2"  Content="Poštanski broj" Target="{Binding ElementName=TextBoxZipCode}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="3" Grid.Column="3" x:Name="TextBoxZipCode" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="ZipCode" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
+            <Label Grid.Row="4" Grid.Column="0"  Content="Telefon" Target="{Binding ElementName=TextBoxMemberPhone}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="4" Grid.Column="1" x:Name="TextBoxMemberPhone" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="Phone" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+
+            <Label Grid.Row="4" Grid.Column="2"  Content="Mobitel" Target="{Binding ElementName=TextBoxMemberMobile}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="4" Grid.Column="3" x:Name="TextBoxMemberMobile" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="MobilePhone" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+
+            <Label Grid.Row="4" Grid.Column="4"  Content="Poslovni tel." Target="{Binding ElementName=TextBoxMemberBussinessPhone}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="4" Grid.Column="5" x:Name="TextBoxMemberBussinessPhone" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="BussinessPhone" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+
+            <Label Grid.Row="5" Grid.Column="0"  Content="Email" Target="{Binding ElementName=TextBoxMemberEmail}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" x:Name="TextBoxMemberEmail" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="Email" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
+            
+            <CheckBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Content="Pod skrbništvom" IsChecked="{Binding HasGuardian, Mode=OneWay}" IsHitTestVisible="False" Focusable="False" IsEnabled="False"/>
+        </Grid>
+    </Grid>
+</UserControl>

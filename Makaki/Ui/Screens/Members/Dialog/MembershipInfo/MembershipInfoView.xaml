@@ -1,0 +1,200 @@
+﻿<UserControl x:Class="Makaki.Ui.Screens.Members.Dialog.MembershipInfo.MembershipInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Makaki.Ui.Screens.Members.Dialog.MembershipInfo"
+             xmlns:validationRules="clr-namespace:Makaki.Ui.ValidationRules"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Content="_Datum pristupa" Target="{Binding ElementName=DatePicker}" Style="{StaticResource LabelStandard2}"/>
+            <DatePicker Grid.Row="0" Grid.Column="1"
+                        x:Name="DatePicker"                         
+                        Style="{StaticResource DatePickerStandard}" >
+
+                <DatePicker.SelectedDate>
+                    <Binding Path="JoinDate" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" TargetNullValue="{x:Static system:DateTime.Today}">
+                        <Binding.ValidationRules>
+                            <validationRules:DateRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </Grid>
+        <Separator Grid.Row="1"/>
+        <Grid Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto" MinHeight="30"/>
+                <RowDefinition Height="Auto" MinHeight="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0"  Content="Broj član. iskaznice" Target="{Binding ElementName=TextBoxCardNumber}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxCardNumber" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="CardNumber" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
+            <Label Grid.Row="1" Grid.Column="0"  Content="Reg. broj saveza" Target="{Binding ElementName=TextBoxAssociatinNumber}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxAssociatinNumber" Style="{StaticResource TextBoxStandard}" >
+                <Binding Path="AssociationRegistrationNumber" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+
+
+            <Label Grid.Row="0" Grid.Column="2" Content="Podružnica" Target="{Binding ElementName=ComboBoxBranch}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="0" Grid.Column="3" x:Name="ComboBoxBranch" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding Branches}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding BranchId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="Branch" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Label Grid.Row="1" Grid.Column="2" Content="Funkcija" Target="{Binding ElementName=ComboBoxFunction}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="1" Grid.Column="3" x:Name="ComboBoxFunction" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding MemberFunctions}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding MemberFunctionId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="MemberFunction" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Separator Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"/>
+            
+            <Label Grid.Row="3" Grid.Column="0" Content="Članarina" Target="{Binding ElementName=ComboBoxAffiliation}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" x:Name="ComboBoxAffiliation" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding AffiliationFeeTypes}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding AffiliationFeeTypeId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="AffiliationFeeType" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Label Grid.Row="3" Grid.Column="2" Content="Kategorija" Target="{Binding ElementName=ComboBoxMemberCategory}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="3" Grid.Column="3" x:Name="ComboBoxMemberCategory" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding MemberCategories}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding MemberCategoryId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="MemberCategory" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Label Grid.Row="4" Grid.Column="0" Content="Sekcija" Target="{Binding ElementName=ComboBoxSection}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="4" Grid.Column="1" x:Name="ComboBoxSection" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding Sections}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding SectionId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="Section" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+
+            <Label Grid.Row="4" Grid.Column="2" Content="Trener" Target="{Binding ElementName=ComboBoxCoach}" Style="{StaticResource LabelStandard2}"/>
+            <ComboBox Grid.Row="4" Grid.Column="3" x:Name="ComboBoxCoach" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding Coaches}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding CoachId, Mode=TwoWay}">
+                <ComboBox.SelectedItem>
+                    <Binding Path="Coach" Mode="TwoWay">
+                        <Binding.ValidationRules>
+                            <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.SelectedItem>
+            </ComboBox>
+            <Separator Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4"/>
+
+            <Label Grid.Row="6" Grid.Column="0" Content="Datum ispisa" Target="{Binding ElementName=DatePickerUnjoinDate}" Style="{StaticResource LabelStandard2}"/>
+            <DatePicker Grid.Row="6" Grid.Column="1"
+                        x:Name="DatePickerUnjoinDate"                         
+                        Style="{StaticResource DatePickerStandard}" >
+
+                <DatePicker.SelectedDate>
+                    <Binding Path="UnjoinDate" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <validationRules:DateRule ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+
+            <Label Grid.Row="7" Grid.Column="0" Content="Razlog ispisa" Target="{Binding ElementName=TextBoxUnjoinReason}" Style="{StaticResource LabelStandard2}" />
+            <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="2" x:Name="TextBoxUnjoinReason" Text="{Binding UnjoinReason}" Style="{StaticResource TextBoxBig}" />
+        </Grid>
+    </Grid>
+</UserControl>

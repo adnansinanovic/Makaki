@@ -1,0 +1,41 @@
+﻿<Application x:Class="Makaki.App" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             StartupUri="MainWindow.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:Makaki.Ui.Converters">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml"/>
+                <!--<vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:Makaki.ViewModel" />-->
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/AppBarIcons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/Brushes.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/Buttons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/Checkbox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/DatePicker.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/DropdownButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/DataGrid.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/IconsNonShared.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/Labels.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/TabControls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/UI/Resources/TextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <converters:StringToPhoneConverter x:Key="StringToPhoneConverter" />
+            <converters:ToLowerCaseConverter x:Key="ToLowerCaseConverter" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:StringToDateTimeConverter x:Key="StringToDateTimeConverter" />
+            <converters:MultiValueConverter x:Key="MultiValueConverter" />
+            <converters:GenderConverter x:Key="GenderConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

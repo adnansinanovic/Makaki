@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="Makaki.Ui.Screens.Members.Bottom.BasicInfo.BasicInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="Auto" MinWidth="100"></ColumnDefinition>
+            <ColumnDefinition Width="100" ></ColumnDefinition>
+            <ColumnDefinition Width="*" MinWidth="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+            <RowDefinition Height="22"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="4"  Content="{Binding Name}" Style="{DynamicResource LabelHeader2}" />
+        <!--<Label Grid.Row="0" Grid.ColumnSpan="4"  Content="Musa kesedzija"  />-->
+
+        <StackPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" HorizontalAlignment="Right" Margin="0 0 5 0">
+            <Rectangle Width="20" Height="20" Fill="{StaticResource BrushAlertIcon}">
+                <Rectangle.OpacityMask>
+                    <VisualBrush Stretch="Fill" Visual="{StaticResource IconAlert}"/>
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <Label Content="Osoba pod starateljstvom"  VerticalAlignment="Stretch" VerticalContentAlignment="Center" Style="{StaticResource LabelSelected}" />
+        </StackPanel>
+
+        <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStandard}"  Content="Prezime i ime"  />
+        <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding Name}" />
+
+        <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource LabelStandard}"  Content="Adresa"  />
+        <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding Address}"   />
+
+        <Label Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelStandard}"  Content="Naselje" />
+        <Label Grid.Row="3" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding City}"  />
+
+        <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStandard}"  Content="JMBG"  />
+        <Label Grid.Row="4" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding Member.PID}" />
+
+        <Label Grid.Row="1" Grid.Column="2" Style="{StaticResource LabelStandard}"  Content="Telefon"  />
+        <Label Grid.Row="1" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding Member.Phone, Converter={StaticResource StringToPhoneConverter}}"  />
+
+        <Label Grid.Row="2" Grid.Column="2" Style="{StaticResource LabelStandard}"  Content="Mobitel"  />
+        <Label Grid.Row="2" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding Member.MobilePhone, Converter={StaticResource StringToPhoneConverter}}"   />
+
+        <Label Grid.Row="3" Grid.Column="2" Style="{StaticResource LabelStandard}"  Content="Email" />
+        <Label Grid.Row="3" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding Member.Email, Converter={StaticResource ToLowerCaseConverter}}"   />
+
+        <Label Grid.Row="4" Grid.Column="2" Style="{StaticResource LabelStandard}" Content="Status"  />
+        <Label Grid.Row="4" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding EmploymentStatus}"   />
+
+        <Label Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelStandard}" Content="Podaci o staratelju" Margin="5 5 5 0"  Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Separator Grid.Row="5" Grid.ColumnSpan="4" Grid.Column="0" VerticalAlignment="Bottom" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}"></Separator>
+
+        <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource LabelStandard}"  Content="Prezime i ime" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Label Grid.Row="6" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding GuardianName}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+        <Label Grid.Row="7" Grid.Column="0" Style="{StaticResource LabelStandard}"  Content="Adresa" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}"  />
+        <Label Grid.Row="7" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding GuardianAddress}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+        <Label Grid.Row="8" Grid.Column="0" Style="{StaticResource LabelStandard}" Content="Naselje" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Label Grid.Row="8" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding GuardianCity}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}"  />
+
+        <Label Grid.Row="9" Grid.Column="0" Style="{StaticResource LabelStandard}" Content="JMBG" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Label Grid.Row="9" Grid.Column="1" Style="{StaticResource LabelValue}" Content="{Binding Member.PID}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+        <Label Grid.Row="6" Grid.Column="2" Style="{StaticResource LabelStandard}"  Content="Telefon" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Label Grid.Row="6" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding Member.Phone, Converter={StaticResource StringToPhoneConverter}}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+        <Label Grid.Row="7" Grid.Column="2" Style="{StaticResource LabelStandard}" Content="Mobitel" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Label Grid.Row="7" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding Member.MobilePhone, Converter={StaticResource StringToPhoneConverter}}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+
+        <Label Grid.Row="8" Grid.Column="2" Style="{StaticResource LabelStandard}" Content="Email" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}" />
+        <Label Grid.Row="8" Grid.Column="3" Style="{StaticResource LabelValue}" Content="{Binding Member.Email, Converter={StaticResource ToLowerCaseConverter}}" Visibility="{Binding ShowGuardian, Converter={StaticResource BoolToVisibilityConverter}}"  />
+
+    </Grid>
+</UserControl>

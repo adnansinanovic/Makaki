@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="Makaki.Ui.Screens.Members.Dialog.AdditionalInfo.AdditionalInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Makaki.Ui.Screens.Members.Dialog.AdditionalInfo"
+             xmlns:validationRules="clr-namespace:Makaki.Ui.ValidationRules"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Status" Target="{Binding ElementName=ComboBoxEmploymentStatus}" Style="{StaticResource LabelStandard2}"/>
+        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ComboBoxEmploymentStatus" 
+                      Style="{StaticResource ComboBoxStandard}" 
+                      ItemsSource="{Binding EmploymentStatuses}"            
+                      DisplayMemberPath="Name"
+                      SelectedValuePath="Id"                      
+                      SelectedValue="{Binding EmploymentStatusId, Mode=TwoWay}">
+            <ComboBox.SelectedItem>
+                <Binding Path="EmploymentStatus" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <validationRules:RequiredFieldRule ValidatesOnTargetUpdated="True"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.SelectedItem>
+        </ComboBox>
+
+        <Label Grid.Row="1" Grid.Column="0"  Content="{Binding EmploymentPlaceLabel}"  Target="{Binding ElementName=TextBoxEmploymentPlace}" Style="{StaticResource LabelStandard2}" />
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxEmploymentPlace" IsEnabled="{Binding Path=IsEmploymentPlaceEnabled}" Style="{StaticResource TextBoxStandard}" >
+            <Binding Path="EmploymentPlace" UpdateSourceTrigger="PropertyChanged"/>
+        </TextBox>
+
+        <Label Grid.Row="2" Grid.Column="0"  Content="{Binding EmploymentDetailsLabel}"  Target="{Binding ElementName=TextBoxEmploymentDetails}" Style="{StaticResource LabelStandard2}" />
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxEmploymentDetails" IsEnabled="{Binding Path=IsEmploymentDetailsEnabled}" Style="{StaticResource TextBoxStandard}" >
+            <Binding Path="EmploymentDetails" UpdateSourceTrigger="PropertyChanged"/>
+        </TextBox>
+        <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="Liječnički pregled"  Target="{Binding ElementName=TextBoxEmploymentDetails}" Style="{StaticResource LabelHeader3}" />
+
+        <CheckBox Grid.Row="5" Grid.Column="1" Content="Obavezan liječnički pregled" IsChecked="{Binding RequiredPhysical }"/>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="Zadnji pregled" Target="{Binding ElementName=DatePicker}" Style="{StaticResource LabelStandard2}"/>
+        <DatePicker Grid.Row="6" Grid.Column="1"  
+                        x:Name="DatePicker" 
+                        Style="{StaticResource DatePickerStandard}" >
+
+            <DatePicker.SelectedDate>
+                <Binding Path="LastPhysical" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+            </DatePicker.SelectedDate>
+        </DatePicker>
+    </Grid>
+</UserControl>

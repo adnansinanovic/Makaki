@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2642BE9A-E4E0-4716-8B9E-837C63038988}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Makaki</RootNamespace>
+    <AssemblyName>Makaki</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19038, Culture=neutral, PublicKeyToken=0e453835af4ee6ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net40\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=f46ff315b1088208, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net40\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.4.1.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.4.1\lib\net40\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Data\Seeder\ActivitySeeder.cs" />
+    <Compile Include="Data\Seeder\ActivityTypeSeeder.cs" />
+    <Compile Include="Data\Seeder\ActivityParticipantSeeder.cs" />
+    <Compile Include="Data\Seeder\AffiliationFeeTypeSeeder.cs" />
+    <Compile Include="Data\Seeder\AchievementTypeSeeder.cs" />
+    <Compile Include="Data\Seeder\AchievementSeeder.cs" />
+    <Compile Include="Data\Seeder\CoachSeeder.cs" />
+    <Compile Include="Data\Seeder\SectionSeeder.cs" />
+    <Compile Include="Data\Seeder\TransactionMeanSeeder.cs" />
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Model\Activity.cs" />
+    <Compile Include="Model\ActivityParticipant.cs" />
+    <Compile Include="Model\Achievement.cs" />
+    <Compile Include="RandomHelper.cs" />
+    <Compile Include="Ui\Containers\MessengerArg.cs" />
+    <Compile Include="Ui\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Ui\Converters\GenderConverter.cs" />
+    <Compile Include="Ui\Converters\MultiValueConverter.cs" />
+    <Compile Include="Ui\Converters\StringToDateTimeConverter .cs" />
+    <Compile Include="Ui\Converters\StringToPhoneConverter.cs" />
+    <Compile Include="Ui\Converters\ToLowerCaseConverter.cs" />
+    <Compile Include="Ui\Helper\CloseDialogHelper.cs" />
+    <Compile Include="Ui\MyCommands.cs" />
+    <Compile Include="Ui\Screens\Activities\ActivitiesView.xaml.cs">
+      <DependentUpon>ActivitiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Activities\ActivitiesViewModel.cs" />
+    <Compile Include="Ui\Screens\Home\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Home\HomeViewModel.cs" />
+    <Compile Include="Ui\Screens\MainMenu\MainMenuButtonEnum.cs" />
+    <Compile Include="Ui\Screens\MainMenu\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\MainMenu\MainMenuViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementInfoEditView.xaml.cs">
+      <DependentUpon>AchievementInfoEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementInfoEditViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Bottom\ActivitiesInfo\ActivitiesInfoView.xaml.cs">
+      <DependentUpon>ActivitiesInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Bottom\ActivitiesInfo\ActivitiesInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Bottom\BasicInfo\BasicInfoView.xaml.cs">
+      <DependentUpon>BasicInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Bottom\BasicInfo\BasicInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementsInfoView.xaml.cs">
+      <DependentUpon>AchievementsInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementsInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Dialog\AdditionalInfo\AdditionalInfoView.xaml.cs">
+      <DependentUpon>AdditionalInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Dialog\AdditionalInfo\AdditionalInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Dialog\BasicInfo\BasicInfoView.xaml.cs">
+      <DependentUpon>BasicInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Dialog\BasicInfo\BasicInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Dialog\GuardianInfo\GuardianInfoView.xaml.cs">
+      <DependentUpon>GuardianInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Dialog\GuardianInfo\GuardianInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Dialog\MemberEditDialog.xaml.cs">
+      <DependentUpon>MemberEditDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Dialog\MemberEditDialogViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\Dialog\MembershipInfo\MembershipInfoView.xaml.cs">
+      <DependentUpon>MembershipInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\Dialog\MembershipInfo\MembershipInfoViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\ListMembers\ListMembersView.xaml.cs">
+      <DependentUpon>ListMembersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\ListMembers\ListMembersViewModel.cs" />
+    <Compile Include="Ui\Screens\Members\MembersView.xaml.cs">
+      <DependentUpon>MembersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\Members\MembersViewModel.cs" />
+    <Compile Include="Ui\Screens\ReferentDialog\Add\AddView.xaml.cs">
+      <DependentUpon>AddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\ReferentDialog\Add\AddViewModel.cs" />
+    <Compile Include="Ui\Screens\ReferentDialog\DialogView.xaml.cs">
+      <DependentUpon>DialogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\ReferentDialog\DialogReferentViewModel.cs" />
+    <Compile Include="Ui\Screens\ReferentDialog\DialogViewScreenEnum.cs" />
+    <Compile Include="Ui\Screens\ReferentDialog\Edit\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\ReferentDialog\Edit\EditViewModel.cs" />
+    <Compile Include="Ui\Screens\ReferentDialog\List\ListView.xaml.cs">
+      <DependentUpon>ListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Screens\ReferentDialog\List\ListViewModel.cs" />
+    <Compile Include="Ui\ValidationRules\DateRule.cs" />
+    <Compile Include="Ui\ValidationRules\RequiredFieldRule.cs" />
+    <Compile Include="Ui\ValidationRules\StringIsNumberRule.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\DatabaseContext.cs" />
+    <Compile Include="Data\DatabaseInitializer.cs" />
+    <Compile Include="Data\Repository\GenericRepository.cs" />
+    <Compile Include="Data\Seeder\AddressSeeder.cs" />
+    <Compile Include="Data\Seeder\BranchSeeder.cs" />
+    <Compile Include="Data\Seeder\CitySeeder.cs" />
+    <Compile Include="Data\Seeder\CountrySeeder.cs" />
+    <Compile Include="Data\Seeder\EmploymentStatusSeeder.cs" />
+    <Compile Include="Data\Seeder\GuardianSeeder.cs" />
+    <Compile Include="Data\Seeder\ISeeder.cs" />
+    <Compile Include="Data\Seeder\MemberCategorySeeder.cs" />
+    <Compile Include="Data\Seeder\MemberFunctionsSeeder.cs" />
+    <Compile Include="Data\Seeder\MemberSeeder.cs" />
+    <Compile Include="Data\Seeder\MembershipTypesSeeder.cs" />
+    <Compile Include="Data\UnitOfWork.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Ui\Resources\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\Buttons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\AppBarIcons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\Checkbox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\DatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\DropdownButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\IconsNonShared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Resources\Labels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\TabControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Resources\TextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Activities\ActivitiesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\Home\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\MainMenu\MainMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementInfoEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Bottom\ActivitiesInfo\ActivitiesInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Bottom\BasicInfo\BasicInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\Members\Bottom\AchievementInfo\AchievementsInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Dialog\AdditionalInfo\AdditionalInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Dialog\BasicInfo\BasicInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Dialog\GuardianInfo\GuardianInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Dialog\MemberEditDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\Dialog\MembershipInfo\MembershipInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Screens\Members\ListMembers\ListMembersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\Members\MembersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\ReferentDialog\Add\AddView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\ReferentDialog\DialogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\ReferentDialog\Edit\EditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Screens\ReferentDialog\List\ListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\City.cs" />
+    <Compile Include="Model\Country.cs" />
+    <Compile Include="Model\GenderEnum.cs" />
+    <Compile Include="Model\Guardian.cs" />
+    <Compile Include="Model\IReferentModel.cs" />
+    <Compile Include="Model\Member.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <EmbeddedResource Include="Assets\Members.csv" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Ui\Resources\Entypo.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ui\Screens\MainWindow\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

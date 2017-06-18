@@ -1,0 +1,88 @@
+﻿<Window x:Class="Makaki.Ui.Screens.Members.Dialog.MemberEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:Makaki.Ui"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"        
+        xmlns:basicInfo="clr-namespace:Makaki.Ui.Screens.Members.Dialog.BasicInfo"
+        xmlns:additionalInfo="clr-namespace:Makaki.Ui.Screens.Members.Dialog.AdditionalInfo"
+        xmlns:membershipInfo="clr-namespace:Makaki.Ui.Screens.Members.Dialog.MembershipInfo"
+        xmlns:guardianInfo="clr-namespace:Makaki.Ui.Screens.Members.Dialog.GuardianInfo"
+        mc:Ignorable="d"
+        Title="MemberEditDialog" Height="500" Width="600">
+
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type basicInfo:BasicInfoViewModel}">
+            <basicInfo:BasicInfoView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type additionalInfo:AdditionalInfoViewModel}">
+            <additionalInfo:AdditionalInfoView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type membershipInfo:MembershipInfoViewModel}">
+            <membershipInfo:MembershipInfoView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type guardianInfo:GuardianInfoViewModel}">
+            <guardianInfo:GuardianInfoView/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource LabelHeader}" Content="{Binding Title}"/>
+        <Separator Grid.Row="0" VerticalAlignment="Bottom"></Separator>
+        
+        <Grid Grid.Row="1">
+            <TabControl Grid.Row="0" Grid.Column="0" SelectedIndex="{Binding SelectedTabIndex, Mode=TwoWay}" >
+                <TabItem Header="Osnovni podaci" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding BasicInfoArea}"/>
+                </TabItem>
+                <TabItem Header="Dodatni podaci" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding AdditionalInfoArea}"/>
+                </TabItem>
+                <TabItem Header="Podaci članstva" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding MembershipInfoArea}"/>
+                </TabItem>
+                <TabItem Header="Staratelj" Style="{DynamicResource TabControlHeader}">
+                    <ContentControl Content="{Binding GuardianInfoArea}"/>
+                </TabItem>
+                <TabItem Header="Napomena" Style="{DynamicResource TabControlHeader}">
+
+                </TabItem>
+            </TabControl>
+
+
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="ButtonCancel" 
+                    Content="Odustani" 
+                    Style="{StaticResource ButtonCancel}"
+                    Command="{x:Static ui:MyCommands.CloseCommand}" >
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                        <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}"/>
+                        <Binding Source="{x:Static system:Boolean.FalseString}"></Binding>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+
+
+            <Button x:Name="ButtonOk" Content="Upiši" 
+                    Command="{Binding ButtonOkCommand}"                     
+                    Style="{StaticResource ButtonOK}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MultiValueConverter}">
+                        <Binding RelativeSource="{RelativeSource FindAncestor, AncestorType={x:Type Window}}"/>
+                        <Binding Source="{x:Static system:Boolean.TrueString}"></Binding>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
